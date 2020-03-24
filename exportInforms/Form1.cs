@@ -136,8 +136,10 @@ namespace exportInforms
                     ReportsD.Name = listView1.Items[i].SubItems[1].Text;
                     ReportsD.Title = listView1.Items[i].SubItems[2].Text;
                     ReportsD.Description = listView1.Items[i].SubItems[3].Text;
-                    Rep.Datos.Add(ReportsD);
+                    
+                   Console.WriteLine(ReportsD.ID);
                 }
+                
 
             }
             catch (ArgumentException ex)

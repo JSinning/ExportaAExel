@@ -27,9 +27,10 @@ namespace exportInforms
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", Datos));
 
+            
+
 
             this.reportViewer1.RefreshReport();
         }
-
     }
 }
