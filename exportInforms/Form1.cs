@@ -46,10 +46,12 @@ namespace exportInforms
 
                 item.SubItems.Add(dta.Title);
                 item.SubItems.Add(dta.Body);
-                listView1.Items.Add(item);
+                //listView1.Items.Add(item);
+                
 
             }
 
+            dataGridView1.DataSource. = Lista;
 
         }
 
@@ -88,7 +90,8 @@ namespace exportInforms
             }
             try
             {
-                listView1.Items.Clear();
+                dataGridView1.DataSource = null;
+                //listView1.Items.Clear();
                 int iduser = Int32.Parse(TxtSearch.Text);
                 string listusersid = await postGetid(iduser);
                 string usersrespueta = await usersGet();
@@ -111,7 +114,8 @@ namespace exportInforms
                     }
                     item.SubItems.Add(dta.Title);
                     item.SubItems.Add(dta.Body);
-                    listView1.Items.Add(item);
+                    //listView1.Items.Add(item);
+                    dataGridView1.DataSource = item;
                 }
 
             }
@@ -130,15 +134,7 @@ namespace exportInforms
             ReportsData ReportsD = new ReportsData();
             try
             {
-                for (int i = 0; i <= listView1.Items.Count; i++)
-                {
-                    ReportsD.ID = Int32.Parse(listView1.Items[i].SubItems[0].Text);
-                    ReportsD.Name = listView1.Items[i].SubItems[1].Text;
-                    ReportsD.Title = listView1.Items[i].SubItems[2].Text;
-                    ReportsD.Description = listView1.Items[i].SubItems[3].Text;
-                    
-                   Console.WriteLine(ReportsD.ID);
-                }
+               
                 
 
             }
