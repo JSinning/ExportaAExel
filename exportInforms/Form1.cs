@@ -46,13 +46,11 @@ namespace exportInforms
 
                 item.SubItems.Add(dta.Title);
                 item.SubItems.Add(dta.Body);
-                //listView1.Items.Add(item);
+               listView1.Items.Add(item);
+            
                 
 
             }
-
-            dataGridView1.DataSource. = Lista;
-
         }
 
         public async Task<string> postGet()
@@ -90,8 +88,7 @@ namespace exportInforms
             }
             try
             {
-                dataGridView1.DataSource = null;
-                //listView1.Items.Clear();
+                listView1.Items.Clear();
                 int iduser = Int32.Parse(TxtSearch.Text);
                 string listusersid = await postGetid(iduser);
                 string usersrespueta = await usersGet();
@@ -114,8 +111,8 @@ namespace exportInforms
                     }
                     item.SubItems.Add(dta.Title);
                     item.SubItems.Add(dta.Body);
-                    //listView1.Items.Add(item);
-                    dataGridView1.DataSource = item;
+                    listView1.Items.Add(item);
+                   
                 }
 
             }
@@ -130,20 +127,13 @@ namespace exportInforms
 
         private void BtnReport_Click(object sender, EventArgs e)
         {
-            GenerateReport Rep = new GenerateReport();
-            ReportsData ReportsD = new ReportsData();
-            try
+            ExportExcel export = new ExportExcel();
+            if (!export.ExportArchiveExcel(listView1))
             {
-               
-                
-
+                MessageBox.Show("No se Pudo Guardar la Informacon");
+                return;
             }
-            catch (ArgumentException ex)
-            {
-                ex.Message.ToString();
-            }
-
-            Rep.ShowDialog();
+            MessageBox.Show("Infomacion Guardad -->");
         }
     }
 }
